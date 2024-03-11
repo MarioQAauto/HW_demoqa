@@ -1,12 +1,14 @@
 package tests;
 
+import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Configuration;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+import org.openqa.selenium.By;
 
 import static com.codeborne.selenide.Condition.text;
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.open;
+import static com.codeborne.selenide.Selectors.*;
+import static com.codeborne.selenide.Selenide.*;
 
 public class automationPracticeForm {
 
@@ -15,21 +17,29 @@ public class automationPracticeForm {
         Configuration.browserSize = "1920x1080";
         Configuration.baseUrl = "https://demoqa.com";
         Configuration.pageLoadStrategy = "eager";
-        Configuration.timeout = 5000; // default 4000
     }
 
     @Test
-    void fillFormTest() {
-        open("/text-box");
-        $("#userName").setValue("Sasha");
-        $("#userEmail").setValue("sasha@mail.com");
-        $("#currentAddress").setValue("street 1");
-        $("#permanentAddress").setValue("street 2");
+    void autoTests() {
+
+        open("/automation-practice-form");
+
+        //Простые поля
+        $("#firstName").setValue("Sasha");
+        $("#lastName").setValue("Mario");
+        $("#userEmail").setValue("email@mail.ru");
+        $("#userNumber").setValue("88005553535");
+        $(".custom-radio").click();
+        $(byText("Music")).click();
+        $("#currentAddress").setValue("www leningrad");
+
+        //Выбор объекта
+        $(By.id("subjectsInput")).setValue("M").pressEnter();
+
+        //Импорт картинки
+
+
         $("#submit").click();
 
-        $("#output #name").shouldHave(text("Sasha"));
-        $("#output #email").shouldHave(text("sasha@mail.com"));
-        $("#output #currentAddress").shouldHave(text("street 1"));
-        $("#output #permanentAddress").shouldHave(text("street 2"));
     }
 }
