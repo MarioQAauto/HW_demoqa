@@ -34,9 +34,10 @@ public class AutomationPracticeFormTest {
         //Выбор объекта
         $(By.id("subjectsInput")).setValue("M").pressEnter();
 
-        //Импорт картинки
+        //Импорт картинки (!!)
+        $("#uploadPicture").uploadFromClasspath("images/test2.png");
 
-        $("#uploadPicture").uploadFromClasspath("test2.png");
+
 
         $("#submit").click();
 
