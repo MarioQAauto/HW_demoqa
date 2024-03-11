@@ -1,16 +1,14 @@
 package tests;
 
-import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Configuration;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 
-import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.*;
 import static com.codeborne.selenide.Selenide.*;
 
-public class automationPracticeForm {
+public class AutomationPracticeFormTest {
 
     @BeforeAll
     static void beforeAll() {
@@ -38,6 +36,7 @@ public class automationPracticeForm {
 
         //Импорт картинки
 
+        $("#uploadPicture").uploadFromClasspath("test2.png");
 
         $("#submit").click();
 
